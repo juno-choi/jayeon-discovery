@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  eureka:
+    build: .
+    container_name: eureka
+    expose:
+      - 8761
+    ports:
+      - 8761:8761
+    environment:
+      - spring.config.profile=local
+      - spring.config.uri=http://config:8888
+    
+
+networks:
+  default:
+    external:
+      name: msa
